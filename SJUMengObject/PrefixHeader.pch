@@ -1,0 +1,26 @@
+//
+//  PrefixHeader.pch
+//  SJUMengObject
+//
+//  Created by deli on 2021/5/27.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+// 统计
+#import <UMCommonLog/UMCommonLogHeaders.h>
+
+// 推送
+#import <UMPush/UMessage.h>
+#import <UMCommon/UMCommon.h>
+
+// U-Share核心SDK
+#import <UMShare/UMShare.h>
+
+// 智能认证
+#import <UMVerify/UMVerify.h>
+
+// U-Share分享面板SDK，未添加分享面板SDK可将此行去掉
+#import <UShareUI/UShareUI.h>
+#endif /* PrefixHeader_pch */
