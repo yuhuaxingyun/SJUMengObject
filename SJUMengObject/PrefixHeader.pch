@@ -23,4 +23,13 @@
 
 // U-Share分享面板SDK，未添加分享面板SDK可将此行去掉
 #import <UShareUI/UShareUI.h>
+
+// 提示
+#import <SVProgressHUD/SVProgressHUD.h>
+
+#define ScreenWidth [[UIScreen mainScreen] bounds].size.width
+#define ScreenHeight [[UIScreen mainScreen] bounds].size.height
+
+#define SafeAreabottomEageHeight 44
+
 #endif /* PrefixHeader_pch */

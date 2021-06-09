@@ -3,10 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A4EEACB614AA2A3775E6779 /* Pods_SJUMengObject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 110BA6D16B10941D9D598DFA /* Pods_SJUMengObject.framework */; };
+		AAFFA7414ED61D8A7ADC74DD /* Pods_SJUMengObject_SJUMengObjectUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21BC2AF16FFE7C3A32B7C08 /* Pods_SJUMengObject_SJUMengObjectUITests.framework */; };
+		ABCF776A266DBB1500111BF0 /* SJUMManger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCF7769266DBB1500111BF0 /* SJUMManger.m */; };
+		ABCF776D266DCE4C00111BF0 /* SJShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCF776C266DCE4C00111BF0 /* SJShareView.m */; };
+		ABCF7770266DCF7A00111BF0 /* SJSystemEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCF776F266DCF7A00111BF0 /* SJSystemEnum.m */; };
+		ABCF7773266DD03500111BF0 /* UIButton+SJExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCF7772266DD03500111BF0 /* UIButton+SJExtensions.m */; };
 		ABD6EF09265F3709004784F0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD6EF08265F3709004784F0 /* AppDelegate.m */; };
 		ABD6EF0F265F3709004784F0 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD6EF0E265F3709004784F0 /* ViewController.m */; };
 		ABD6EF12265F3709004784F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABD6EF10265F3709004784F0 /* Main.storyboard */; };
@@ -47,6 +53,7 @@
 		ABD6EFA5265F9D98004784F0 /* YTXOperators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD6EFA2265F9D98004784F0 /* YTXOperators.framework */; };
 		ABD6EFA6265F9D99004784F0 /* YTXMonitor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABD6EFA3265F9D98004784F0 /* YTXMonitor.framework */; };
 		ABD6EFA9265FBA18004784F0 /* SJCustomModel.m in Sources */ = {isa = PBXBuildFile; fileRef = ABD6EFA8265FBA18004784F0 /* SJCustomModel.m */; };
+		C875C09E3A9BA52928421C2D /* Pods_SJUMengObjectTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 036937D16D447F83B55441DA /* Pods_SJUMengObjectTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,6 +74,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		036937D16D447F83B55441DA /* Pods_SJUMengObjectTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SJUMengObjectTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		110BA6D16B10941D9D598DFA /* Pods_SJUMengObject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SJUMengObject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		31098A319675E7200A9463F4 /* Pods-SJUMengObjectTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJUMengObjectTests.release.xcconfig"; path = "Target Support Files/Pods-SJUMengObjectTests/Pods-SJUMengObjectTests.release.xcconfig"; sourceTree = "<group>"; };
+		873D0863C339C859036D8846 /* Pods-SJUMengObject-SJUMengObjectUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJUMengObject-SJUMengObjectUITests.release.xcconfig"; path = "Target Support Files/Pods-SJUMengObject-SJUMengObjectUITests/Pods-SJUMengObject-SJUMengObjectUITests.release.xcconfig"; sourceTree = "<group>"; };
+		927757E64245B5A4615B6394 /* Pods-SJUMengObjectTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJUMengObjectTests.debug.xcconfig"; path = "Target Support Files/Pods-SJUMengObjectTests/Pods-SJUMengObjectTests.debug.xcconfig"; sourceTree = "<group>"; };
+		A21BC2AF16FFE7C3A32B7C08 /* Pods_SJUMengObject_SJUMengObjectUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SJUMengObject_SJUMengObjectUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A2BDCD66CD35B080DD522845 /* Pods-SJUMengObject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJUMengObject.release.xcconfig"; path = "Target Support Files/Pods-SJUMengObject/Pods-SJUMengObject.release.xcconfig"; sourceTree = "<group>"; };
+		ABCF7768266DBB1500111BF0 /* SJUMManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJUMManger.h; sourceTree = "<group>"; };
+		ABCF7769266DBB1500111BF0 /* SJUMManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJUMManger.m; sourceTree = "<group>"; };
+		ABCF776B266DCE4C00111BF0 /* SJShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJShareView.h; sourceTree = "<group>"; };
+		ABCF776C266DCE4C00111BF0 /* SJShareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJShareView.m; sourceTree = "<group>"; };
+		ABCF776E266DCF7A00111BF0 /* SJSystemEnum.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJSystemEnum.h; sourceTree = "<group>"; };
+		ABCF776F266DCF7A00111BF0 /* SJSystemEnum.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJSystemEnum.m; sourceTree = "<group>"; };
+		ABCF7771266DD03500111BF0 /* UIButton+SJExtensions.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIButton+SJExtensions.h"; sourceTree = "<group>"; };
+		ABCF7772266DD03500111BF0 /* UIButton+SJExtensions.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SJExtensions.m"; sourceTree = "<group>"; };
 		ABD6EF04265F3709004784F0 /* SJUMengObject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SJUMengObject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABD6EF07265F3709004784F0 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ABD6EF08265F3709004784F0 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -126,6 +148,8 @@
 		ABD6EFA3265F9D98004784F0 /* YTXMonitor.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YTXMonitor.framework; sourceTree = "<group>"; };
 		ABD6EFA7265FBA18004784F0 /* SJCustomModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJCustomModel.h; sourceTree = "<group>"; };
 		ABD6EFA8265FBA18004784F0 /* SJCustomModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJCustomModel.m; sourceTree = "<group>"; };
+		B99CD9B6C5A688B499AAC66A /* Pods-SJUMengObject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJUMengObject.debug.xcconfig"; path = "Target Support Files/Pods-SJUMengObject/Pods-SJUMengObject.debug.xcconfig"; sourceTree = "<group>"; };
+		D0FCBE91164984B40E044603 /* Pods-SJUMengObject-SJUMengObjectUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SJUMengObject-SJUMengObjectUITests.debug.xcconfig"; path = "Target Support Files/Pods-SJUMengObject-SJUMengObjectUITests/Pods-SJUMengObject-SJUMengObjectUITests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +184,7 @@
 				ABD6EF9E265F8C61004784F0 /* Security.framework in Frameworks */,
 				ABD6EF7F265F85C7004784F0 /* Foundation.framework in Frameworks */,
 				ABD6EF7B265F413C004784F0 /* ImageIO.framework in Frameworks */,
+				7A4EEACB614AA2A3775E6779 /* Pods_SJUMengObject.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -167,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C875C09E3A9BA52928421C2D /* Pods_SJUMengObjectTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +200,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AAFFA7414ED61D8A7ADC74DD /* Pods_SJUMengObject_SJUMengObjectUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,6 +215,7 @@
 				ABD6EF2D265F370B004784F0 /* SJUMengObjectUITests */,
 				ABD6EF05265F3709004784F0 /* Products */,
 				ABD6EF41265F375F004784F0 /* Frameworks */,
+				FAA4BE5A0EDE1AF6248864A5 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -218,6 +246,14 @@
 				ABD6EF4C265F3855004784F0 /* PrefixHeader.pch */,
 				ABD6EFA7265FBA18004784F0 /* SJCustomModel.h */,
 				ABD6EFA8265FBA18004784F0 /* SJCustomModel.m */,
+				ABCF7768266DBB1500111BF0 /* SJUMManger.h */,
+				ABCF7769266DBB1500111BF0 /* SJUMManger.m */,
+				ABCF776B266DCE4C00111BF0 /* SJShareView.h */,
+				ABCF776C266DCE4C00111BF0 /* SJShareView.m */,
+				ABCF776E266DCF7A00111BF0 /* SJSystemEnum.h */,
+				ABCF776F266DCF7A00111BF0 /* SJSystemEnum.m */,
+				ABCF7771266DD03500111BF0 /* UIButton+SJExtensions.h */,
+				ABCF7772266DD03500111BF0 /* UIButton+SJExtensions.m */,
 			);
 			path = SJUMengObject;
 			sourceTree = "<group>";
@@ -272,6 +308,9 @@
 				ABD6EF46265F376E004784F0 /* libsqlite3.tbd */,
 				ABD6EF44265F3765004784F0 /* CoreTelephony.framework */,
 				ABD6EF42265F375F004784F0 /* SystemConfiguration.framework */,
+				110BA6D16B10941D9D598DFA /* Pods_SJUMengObject.framework */,
+				A21BC2AF16FFE7C3A32B7C08 /* Pods_SJUMengObject_SJUMengObjectUITests.framework */,
+				036937D16D447F83B55441DA /* Pods_SJUMengObjectTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -357,6 +396,19 @@
 			path = UMSocialUI;
 			sourceTree = "<group>";
 		};
+		FAA4BE5A0EDE1AF6248864A5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B99CD9B6C5A688B499AAC66A /* Pods-SJUMengObject.debug.xcconfig */,
+				A2BDCD66CD35B080DD522845 /* Pods-SJUMengObject.release.xcconfig */,
+				D0FCBE91164984B40E044603 /* Pods-SJUMengObject-SJUMengObjectUITests.debug.xcconfig */,
+				873D0863C339C859036D8846 /* Pods-SJUMengObject-SJUMengObjectUITests.release.xcconfig */,
+				927757E64245B5A4615B6394 /* Pods-SJUMengObjectTests.debug.xcconfig */,
+				31098A319675E7200A9463F4 /* Pods-SJUMengObjectTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -364,9 +416,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABD6EF33265F370B004784F0 /* Build configuration list for PBXNativeTarget "SJUMengObject" */;
 			buildPhases = (
+				F946E2A77E84460BB7A63CE8 /* [CP] Check Pods Manifest.lock */,
 				ABD6EF00265F3709004784F0 /* Sources */,
 				ABD6EF01265F3709004784F0 /* Frameworks */,
 				ABD6EF02265F3709004784F0 /* Resources */,
+				BFA8F2AD3BD2BB0E503150D4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -381,6 +435,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABD6EF36265F370B004784F0 /* Build configuration list for PBXNativeTarget "SJUMengObjectTests" */;
 			buildPhases = (
+				42F26D922D6966AE5708BB75 /* [CP] Check Pods Manifest.lock */,
 				ABD6EF1B265F370B004784F0 /* Sources */,
 				ABD6EF1C265F370B004784F0 /* Frameworks */,
 				ABD6EF1D265F370B004784F0 /* Resources */,
@@ -399,9 +454,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABD6EF39265F370B004784F0 /* Build configuration list for PBXNativeTarget "SJUMengObjectUITests" */;
 			buildPhases = (
+				6258388AEC77C4E6FA42D142 /* [CP] Check Pods Manifest.lock */,
 				ABD6EF26265F370B004784F0 /* Sources */,
 				ABD6EF27265F370B004784F0 /* Frameworks */,
 				ABD6EF28265F370B004784F0 /* Resources */,
+				EC05E6668705EBD011996704 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -485,13 +542,120 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		42F26D922D6966AE5708BB75 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SJUMengObjectTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		6258388AEC77C4E6FA42D142 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SJUMengObject-SJUMengObjectUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BFA8F2AD3BD2BB0E503150D4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SJUMengObject/Pods-SJUMengObject-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SJUMengObject/Pods-SJUMengObject-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SJUMengObject/Pods-SJUMengObject-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EC05E6668705EBD011996704 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SJUMengObject-SJUMengObjectUITests/Pods-SJUMengObject-SJUMengObjectUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SJUMengObject-SJUMengObjectUITests/Pods-SJUMengObject-SJUMengObjectUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SJUMengObject-SJUMengObjectUITests/Pods-SJUMengObject-SJUMengObjectUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F946E2A77E84460BB7A63CE8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SJUMengObject-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		ABD6EF00265F3709004784F0 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABCF776A266DBB1500111BF0 /* SJUMManger.m in Sources */,
 				ABD6EF0F265F3709004784F0 /* ViewController.m in Sources */,
 				ABD6EF09265F3709004784F0 /* AppDelegate.m in Sources */,
+				ABCF776D266DCE4C00111BF0 /* SJShareView.m in Sources */,
+				ABCF7773266DD03500111BF0 /* UIButton+SJExtensions.m in Sources */,
+				ABCF7770266DCF7A00111BF0 /* SJSystemEnum.m in Sources */,
 				ABD6EF1A265F370B004784F0 /* main.m in Sources */,
 				ABD6EFA9265FBA18004784F0 /* SJCustomModel.m in Sources */,
 			);
@@ -662,6 +826,7 @@
 		};
 		ABD6EF34265F370B004784F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B99CD9B6C5A688B499AAC66A /* Pods-SJUMengObject.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -691,7 +856,9 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"$(inherited)",
 				);
+				PODS_ROOT = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deli.SJUMengObject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -700,6 +867,7 @@
 		};
 		ABD6EF35265F370B004784F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2BDCD66CD35B080DD522845 /* Pods-SJUMengObject.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -729,7 +897,9 @@
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-all_load",
+					"$(inherited)",
 				);
+				PODS_ROOT = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.deli.SJUMengObject;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -738,6 +908,7 @@
 		};
 		ABD6EF37265F370B004784F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 927757E64245B5A4615B6394 /* Pods-SJUMengObjectTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -758,6 +929,7 @@
 		};
 		ABD6EF38265F370B004784F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 31098A319675E7200A9463F4 /* Pods-SJUMengObjectTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -778,6 +950,7 @@
 		};
 		ABD6EF3A265F370B004784F0 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0FCBE91164984B40E044603 /* Pods-SJUMengObject-SJUMengObjectUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N8L2FGMF9;
@@ -796,6 +969,7 @@
 		};
 		ABD6EF3B265F370B004784F0 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 873D0863C339C859036D8846 /* Pods-SJUMengObject-SJUMengObjectUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9N8L2FGMF9;

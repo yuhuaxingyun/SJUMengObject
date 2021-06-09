@@ -15,6 +15,8 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
+#define kUniversalLink @"通用链接"
+
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
 @end
@@ -24,7 +26,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [UMConfigure initWithAppkey:@"60af0fbbbb989470aec15702" channel:@"App Store"];
-
+    [self configUSharePlatforms];
     //设置秘钥
     NSString*info =@"M47KReIDHhRi5hqq0EpI8EAdP14BwGEjPGEZ8FzLzDCTLfV3NQjFchWi9mp15c7bLgCLvL6i24iXXyW7mp/+Al3UlycSAlb7XM7vuJiZ4W4GemmYhvs1jtv+swAH0szVpy6Hg934ZCcMr+PiKXxVdepzhiq+2D/w4nP2/zLHfdaCP3f5HMKReoK4EKs5hQBr3r1vO55zwknO5+FtBW+puSTqw96Zc2QGZ/xhzooooTd53kql6qHtAVfaIWDA35fc3uO71CE8+zFn7zeNCaMMeQ==";
     [UMCommonHandler setVerifySDKInfo:info complete:^(NSDictionary*_Nonnull
@@ -79,6 +81,20 @@
     
     return YES;
 }
+
+#pragma mark - 设置分享
+- (void)configUSharePlatforms{
+    /* 设置微信的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
+
+    /* 设置分享到QQ互联的appID
+         * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
+        */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106271196"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    /* 设置新浪的appKey和appSecret */
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
+}
+
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken{
     if (![deviceToken isKindOfClass:[NSData class]]) return;
     const unsigned *tokenBytes =(const unsigned*)[deviceToken bytes];
@@ -137,9 +153,23 @@
     return result;
 }
 
-- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+//- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler{
+//
+//    return YES;
+//}
 
-    return YES;
+- (BOOL)application:(UIApplication *)application continueUserActivity:(NSUserActivity *)userActivity restorationHandler:(void (^)(NSArray<id<UIUserActivityRestoring>> * _Nullable))restorationHandler {
+    NSString *activityTypeStr = userActivity.activityType;
+    if ([activityTypeStr isEqualToString:NSUserActivityTypeBrowsingWeb]) {
+        NSURL *url = userActivity.webpageURL;
+        if ([url.host isEqualToString:kUniversalLink]) {
+            //此处写iOS13后分享或支付
+//         return [WXApi handleOpenUniversalLink:userActivity delegate:[WXApiManager sharedManager]];
+            //打开对应页面
+        } else {
+           [[UIApplication sharedApplication] openURL:url];
+        }
+    }
+ return YES;
 }
-
 @end

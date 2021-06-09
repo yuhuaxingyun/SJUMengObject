@@ -6,10 +6,15 @@
 //
 
 #import "ViewController.h"
+#import "SJUMManger.h"
+#import "SJShareView.h"
 
 @interface ViewController ()
 
 @property (nonatomic,strong) UIButton *oneLoginBtn;
+@property (nonatomic,strong) UIButton *shareBtn;
+@property (nonatomic,strong) UIButton *thirdPartyLogin;
+@property (nonatomic,strong) UIImageView *multipleImageView;
 
 @end
 
@@ -18,8 +23,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.oneLoginBtn];
+    [self.view addSubview:self.shareBtn];
+    [self.view addSubview:self.thirdPartyLogin];
+//    [self.view addSubview:self.multipleImageView];
 }
 
+#pragma mark - Event
 - (void)oneLoginBtnClick{
     //检查环境
     [UMCommonHandler checkEnvAvailableWithAuthType:UMPNSAuthTypeLoginToken complete:^
@@ -29,6 +38,64 @@
             [self callPage];
         }
     }];
+}
+
+- (void)shareBtnClick:(UIButton *)btn{
+    [SJShareView showMoreWithTitle:@[@"新浪微博",@"微信好友",@"朋友圈",@"微信收藏",@"QQ好友",@"QQ空间",@"复制链接"] imgNameArray:@[@"share_icon_circle",@"share_icon_QQ",@"share_icon_wechat",@"share_icon_circle",@"share_icon_QQ",@"share_icon_Qzone",@"share_icon_copy"] blockTapAction:^(NSInteger index) {
+            UMSocialPlatformType platformType = UMSocialPlatformType_UnKnown;
+            switch (index) {
+                case 0:
+                    platformType = UMSocialPlatformType_Sina;
+                    break;
+                case 1:
+                    platformType = UMSocialPlatformType_WechatSession;
+                    break;
+                case 2:
+                    platformType = UMSocialPlatformType_WechatTimeLine;
+                    break;
+                case 3:
+                    platformType = UMSocialPlatformType_WechatFavorite;
+                    break;
+                case 4:
+                    platformType = UMSocialPlatformType_QQ;
+                    break;
+                case 5:
+                    platformType = UMSocialPlatformType_Qzone;
+                    break;
+        
+                default:
+                    break;
+            }
+            [[SJUMManger shareManger] shareTextToPlatformType:platformType];
+    }];
+}
+
+- (void)thirdPartyLoginClick:(UIButton *)btn{
+    UMSocialPlatformType platformType = UMSocialPlatformType_UnKnown;
+    switch (btn.tag) {
+        case 0:
+            platformType = UMSocialPlatformType_Sina;
+            break;
+        case 1:
+            platformType = UMSocialPlatformType_WechatSession;
+            break;
+        case 2:
+            platformType = UMSocialPlatformType_WechatTimeLine;
+            break;
+        case 3:
+            platformType = UMSocialPlatformType_WechatFavorite;
+            break;
+        case 4:
+            platformType = UMSocialPlatformType_QQ;
+            break;
+        case 5:
+            platformType = UMSocialPlatformType_Qzone;
+            break;
+            
+        default:
+            break;
+    }
+    [[SJUMManger shareManger] getUserInfoForPlatform:platformType];
 }
 
 - (void)callPage{
@@ -73,15 +140,50 @@
 - (UIButton *)oneLoginBtn{
     if (!_oneLoginBtn) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake(0, 100, 200, 50);
-        btn.center = self.view.center;
-        [btn setTitle:@"登录" forState:UIControlStateNormal];
+        btn.frame = CGRectMake((ScreenWidth - 200)/2, 100, 200, 50);
+        [btn setTitle:@"一键登录" forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         btn.backgroundColor = [UIColor purpleColor];
         [btn addTarget:self action:@selector(oneLoginBtnClick) forControlEvents:UIControlEventTouchUpInside];
         _oneLoginBtn = btn;
     }
     return _oneLoginBtn;
+}
+
+- (UIButton *)shareBtn{
+    if (!_shareBtn) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake((ScreenWidth - 200)/2, 200, 200, 50);
+        [btn setTitle:@"分享" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor purpleColor];
+        [btn addTarget:self action:@selector(shareBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        _shareBtn = btn;
+    }
+    return _shareBtn;
+}
+
+- (UIButton *)thirdPartyLogin{
+    if (!_thirdPartyLogin) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake((ScreenWidth - 200)/2, 300, 200, 50);
+        [btn setTitle:@"第三方登录" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor purpleColor];
+        [btn addTarget:self action:@selector(thirdPartyLoginClick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.tag = 4;
+        _thirdPartyLogin = btn;
+    }
+    return _thirdPartyLogin;
+}
+
+- (UIImageView *)multipleImageView{
+    if (!_multipleImageView) {
+        UIImageView *imageView = [[UIImageView alloc]initWithFrame:CGRectMake((ScreenWidth - 200)/2, 400, 200, 200)];
+        imageView.image = [UIImage imageNamed:@"bei"];
+        _multipleImageView = imageView;
+    }
+    return _multipleImageView;
 }
 
 @end
