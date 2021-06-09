@@ -11,11 +11,13 @@
 #import "UMSocialSinaHandler.h"
 #import "WXApi.h"
 
+#import "SJUMManger.h"
+
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-#define kUniversalLink @"通用链接"
+#define kUniversalLink @"applinks:mbfftest.jslink.com"
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 
@@ -25,6 +27,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+  
     [UMConfigure initWithAppkey:@"60af0fbbbb989470aec15702" channel:@"App Store"];
     [self configUSharePlatforms];
     //设置秘钥
@@ -85,14 +88,23 @@
 #pragma mark - 设置分享
 - (void)configUSharePlatforms{
     /* 设置微信的appKey和appSecret */
+
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wxdc1e388c3822c80b" appSecret:@"3baf1193c85774b3fd9d18447d76cab0" redirectURL:@"http://mobile.umeng.com/social"];
 
     /* 设置分享到QQ互联的appID
          * U-Share SDK为了兼容大部分平台命名，统一用appKey和appSecret进行参数设置，而QQ平台仅需将appID作为U-Share的appKey参数传进即可。
         */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106271196"/*设置QQ平台的appID*/  appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1106271196" appSecret:nil redirectURL:nil];
     /* 设置新浪的appKey和appSecret */
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:@"04b48b094faeb16683c32669824ebdad" redirectURL:@"https://sns.whalecloud.com/sina2/callback"];
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"3921700954"  appSecret:nil redirectURL:nil];
+    
+    NSString *plistPickPath = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
+    NSDictionary *plistDictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPickPath];
+    NSString *wxAppId = [plistDictionary objectForKey:@"wxAppId"];
+    //向微信注册AppId
+    NSString *wxuniversalLink = [NSString stringWithFormat:@"https://%@/wx_jishicai/", kUniversalLink];
+    [WXApi registerApp:wxAppId universalLink:wxuniversalLink];
+    NSLog(@"register weixin: %@", wxAppId);
 }
 
 - (void)application:(UIApplication*)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData*)deviceToken{
@@ -164,7 +176,8 @@
         NSURL *url = userActivity.webpageURL;
         if ([url.host isEqualToString:kUniversalLink]) {
             //此处写iOS13后分享或支付
-//         return [WXApi handleOpenUniversalLink:userActivity delegate:[WXApiManager sharedManager]];
+            [WXApi handleOpenUniversalLink:userActivity delegate:nil];
+
             //打开对应页面
         } else {
            [[UIApplication sharedApplication] openURL:url];

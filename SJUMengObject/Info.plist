@@ -147,5 +147,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>wxAppId</key>
+	<string>wxdc1e388c3822c80b</string>
+	<key>wxAppSecret</key>
+	<string>3baf1193c85774b3fd9d18447d76cab0</string>
 </dict>
 </plist>
