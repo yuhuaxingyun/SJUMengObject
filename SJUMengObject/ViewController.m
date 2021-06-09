@@ -8,12 +8,17 @@
 #import "ViewController.h"
 #import "SJUMManger.h"
 #import "SJShareView.h"
+#import <AuthenticationServices/AuthenticationServices.h>
+#import "WXApi.h"
 
-@interface ViewController ()
+@interface ViewController ()<ASAuthorizationControllerDelegate,ASAuthorizationControllerPresentationContextProviding>
 
 @property (nonatomic,strong) UIButton *oneLoginBtn;
 @property (nonatomic,strong) UIButton *shareBtn;
-@property (nonatomic,strong) UIButton *thirdPartyLogin;
+@property (nonatomic,strong) UILabel *thirdPartyLoginLabel;
+@property (nonatomic,strong) UIButton *qqLoginButton;
+@property (nonatomic,strong) UIButton *weChatLoginButton;
+@property (nonatomic,strong) ASAuthorizationAppleIDButton *appleLoginButton;
 @property (nonatomic,strong) UIImageView *multipleImageView;
 
 @end
@@ -24,8 +29,26 @@
     [super viewDidLoad];
     [self.view addSubview:self.oneLoginBtn];
     [self.view addSubview:self.shareBtn];
-    [self.view addSubview:self.thirdPartyLogin];
+    [self.view addSubview:self.thirdPartyLoginLabel];
+    [self thirdPartyLogin];
 //    [self.view addSubview:self.multipleImageView];
+}
+
+- (void)thirdPartyLogin{
+    [self.view addSubview:self.qqLoginButton];
+    [self.view addSubview:self.weChatLoginButton];
+    if ([WXApi isWXAppInstalled]){
+        self.qqLoginButton.frame = CGRectMake((ScreenWidth - 160)/4, 400, 80, 80);
+        self.weChatLoginButton.frame = CGRectMake(3*(ScreenWidth - 160)/4 + 80, 400, 80, 80);
+    }else{
+        self.weChatLoginButton.frame = CGRectMake((ScreenWidth - 80)/2, 400, 80, 80);
+    }
+
+    if (@available(iOS 13.0, *)) {
+        [self.view addSubview:self.appleLoginButton];
+    } else {
+        // Fallback on earlier versions
+    }
 }
 
 #pragma mark - Event
@@ -38,6 +61,24 @@
             [self callPage];
         }
     }];
+}
+
+- (void)appleLoginClick{
+    if (@available(iOS 13.0, *)) {
+        ASAuthorizationAppleIDProvider *appleIDProvider = [[ASAuthorizationAppleIDProvider alloc] init];
+        ASAuthorizationAppleIDRequest *appleIDRequest = [appleIDProvider createRequest];
+        // 用户授权请求的联系信息
+        appleIDRequest.requestedScopes = @[ASAuthorizationScopeFullName, ASAuthorizationScopeEmail];
+        ASAuthorizationController *authorizationController = [[ASAuthorizationController alloc] initWithAuthorizationRequests:@[appleIDRequest]];
+        // 设置授权控制器通知授权请求的成功与失败的代理
+        authorizationController.delegate = self;
+        // 设置提供 展示上下文的代理，在这个上下文中 系统可以展示授权界面给用户
+        authorizationController.presentationContextProvider = self;
+        // 在控制器初始化期间启动授权流
+        [authorizationController performRequests];
+    } else {
+        NSLog(@"该系统版本不可用Apple登录");
+    }
 }
 
 - (void)shareBtnClick:(UIButton *)btn{
@@ -137,6 +178,58 @@
 
 }
 
+#pragma mark - ASAuthorizationControllerDelegate
+- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithAuthorization:(ASAuthorization *)authorization  API_AVAILABLE(ios(13.0)){
+    
+    if ([authorization.credential isKindOfClass:[ASAuthorizationAppleIDCredential class]]) {
+        // 用户登录使用ASAuthorizationAppleIDCredential
+        ASAuthorizationAppleIDCredential *appleIDCredential = authorization.credential;
+        NSString *user = appleIDCredential.user;
+        // 使用过授权的，可能获取不到以下三个参数
+        NSString *familyName = appleIDCredential.fullName.familyName;
+        NSString *givenName = appleIDCredential.fullName.givenName;
+        NSString *email = appleIDCredential.email;
+        
+        } else if ([authorization.credential isKindOfClass:[ASPasswordCredential class]]) {
+            // 用户登录使用现有的密码凭证（iCloud记录的）
+            ASPasswordCredential *passwordCredential = authorization.credential;
+            // 密码凭证对象的用户标识 用户的唯一标识
+            NSString *user = passwordCredential.user;
+            // 密码凭证对象的密码
+            NSString *password = passwordCredential.password;
+            
+        } else {
+            NSLog(@"授权信息均不符");
+        }
+}
+
+- (void)authorizationController:(ASAuthorizationController *)controller didCompleteWithError:(NSError *)error API_AVAILABLE(ios(13.0)) {
+    
+    NSString *errorMsg = nil;
+    switch (error.code) {
+        case ASAuthorizationErrorCanceled:
+            errorMsg = @"用户取消了授权请求";
+            break;
+        case ASAuthorizationErrorFailed:
+            errorMsg = @"授权请求失败";
+            break;
+        case ASAuthorizationErrorInvalidResponse:
+            errorMsg = @"授权请求响应无效";
+            break;
+        case ASAuthorizationErrorNotHandled:
+            errorMsg = @"未能处理授权请求";
+            break;
+        case ASAuthorizationErrorUnknown:
+            errorMsg = @"授权请求失败未知原因";
+            break;
+            
+        default:
+            break;
+    }
+    NSLog(@"%@", errorMsg);
+}
+
+#pragma mark - getter
 - (UIButton *)oneLoginBtn{
     if (!_oneLoginBtn) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -163,18 +256,58 @@
     return _shareBtn;
 }
 
-- (UIButton *)thirdPartyLogin{
-    if (!_thirdPartyLogin) {
+- (UILabel *)thirdPartyLoginLabel{
+    if (!_thirdPartyLoginLabel) {
+        UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake((ScreenWidth - 200)/2, 300, 200, 20)];
+        label.text = @"------    第三方登录    ------";
+        label.textColor = [UIColor grayColor];
+        _thirdPartyLoginLabel = label;
+    }
+    return _thirdPartyLoginLabel;
+}
+
+- (UIButton *)qqLoginButton{
+    if (!_qqLoginButton) {
         UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-        btn.frame = CGRectMake((ScreenWidth - 200)/2, 300, 200, 50);
-        [btn setTitle:@"第三方登录" forState:UIControlStateNormal];
+        [btn setTitle:@"QQ登录" forState:UIControlStateNormal];
         [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
         btn.backgroundColor = [UIColor purpleColor];
         [btn addTarget:self action:@selector(thirdPartyLoginClick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        btn.layer.masksToBounds = YES;
+        btn.layer.cornerRadius = 40;
         btn.tag = 4;
-        _thirdPartyLogin = btn;
+        _qqLoginButton = btn;
     }
-    return _thirdPartyLogin;
+    return _qqLoginButton;
+}
+
+- (UIButton *)weChatLoginButton{
+    if (!_weChatLoginButton) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        [btn setTitle:@"微信登录" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor purpleColor];
+        [btn addTarget:self action:@selector(thirdPartyLoginClick:) forControlEvents:UIControlEventTouchUpInside];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        btn.layer.masksToBounds = YES;
+        btn.layer.cornerRadius = 40;
+        btn.tag = 1;
+        _weChatLoginButton = btn;
+    }
+    return _weChatLoginButton;
+}
+
+- (ASAuthorizationAppleIDButton *)appleLoginButton API_AVAILABLE(ios(13.0)){
+    if (!_appleLoginButton) {
+        ASAuthorizationAppleIDButton *appleLoginBtn = [[ASAuthorizationAppleIDButton alloc] initWithAuthorizationButtonType:ASAuthorizationAppleIDButtonTypeSignIn authorizationButtonStyle:ASAuthorizationAppleIDButtonStyleBlack];
+        appleLoginBtn.frame = CGRectMake((ScreenWidth - 200)/2, 550, 200, 50);
+        appleLoginBtn.layer.cornerRadius = 5;
+        appleLoginBtn.layer.masksToBounds = YES;
+        [appleLoginBtn addTarget:self action:@selector(appleLoginClick) forControlEvents:UIControlEventTouchUpInside];
+        _appleLoginButton = appleLoginBtn;
+    }
+    return _appleLoginButton;
 }
 
 - (UIImageView *)multipleImageView{
