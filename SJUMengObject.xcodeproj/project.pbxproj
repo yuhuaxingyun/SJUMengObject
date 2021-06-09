@@ -31,6 +31,8 @@
 		AB174E642670A78700A48457 /* YTXOperators.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB174E602670A78700A48457 /* YTXOperators.framework */; };
 		AB174E652670A78700A48457 /* UMVerify.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB174E612670A78700A48457 /* UMVerify.framework */; };
 		AB174E672670A7D700A48457 /* UMRemoteConfig.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB174E662670A7D700A48457 /* UMRemoteConfig.framework */; };
+		AB174E832670C0F500A48457 /* SJBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB174E822670C0F500A48457 /* SJBaseViewController.m */; };
+		AB174E862670C12900A48457 /* SJNextPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB174E852670C12900A48457 /* SJNextPageViewController.m */; };
 		ABCF776A266DBB1500111BF0 /* SJUMManger.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCF7769266DBB1500111BF0 /* SJUMManger.m */; };
 		ABCF776D266DCE4C00111BF0 /* SJShareView.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCF776C266DCE4C00111BF0 /* SJShareView.m */; };
 		ABCF7770266DCF7A00111BF0 /* SJSystemEnum.m in Sources */ = {isa = PBXBuildFile; fileRef = ABCF776F266DCF7A00111BF0 /* SJSystemEnum.m */; };
@@ -113,6 +115,10 @@
 		AB174E602670A78700A48457 /* YTXOperators.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = YTXOperators.framework; sourceTree = "<group>"; };
 		AB174E612670A78700A48457 /* UMVerify.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMVerify.framework; sourceTree = "<group>"; };
 		AB174E662670A7D700A48457 /* UMRemoteConfig.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMRemoteConfig.framework; sourceTree = "<group>"; };
+		AB174E812670C0F500A48457 /* SJBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJBaseViewController.h; sourceTree = "<group>"; };
+		AB174E822670C0F500A48457 /* SJBaseViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJBaseViewController.m; sourceTree = "<group>"; };
+		AB174E842670C12900A48457 /* SJNextPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJNextPageViewController.h; sourceTree = "<group>"; };
+		AB174E852670C12900A48457 /* SJNextPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJNextPageViewController.m; sourceTree = "<group>"; };
 		ABCF7768266DBB1500111BF0 /* SJUMManger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJUMManger.h; sourceTree = "<group>"; };
 		ABCF7769266DBB1500111BF0 /* SJUMManger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SJUMManger.m; sourceTree = "<group>"; };
 		ABCF776B266DCE4C00111BF0 /* SJShareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SJShareView.h; sourceTree = "<group>"; };
@@ -324,6 +330,10 @@
 				ABD6EF08265F3709004784F0 /* AppDelegate.m */,
 				ABD6EF0D265F3709004784F0 /* ViewController.h */,
 				ABD6EF0E265F3709004784F0 /* ViewController.m */,
+				AB174E842670C12900A48457 /* SJNextPageViewController.h */,
+				AB174E852670C12900A48457 /* SJNextPageViewController.m */,
+				AB174E812670C0F500A48457 /* SJBaseViewController.h */,
+				AB174E822670C0F500A48457 /* SJBaseViewController.m */,
 				ABD6EF10265F3709004784F0 /* Main.storyboard */,
 				ABD6EF13265F370B004784F0 /* Assets.xcassets */,
 				ABD6EF15265F370B004784F0 /* LaunchScreen.storyboard */,
@@ -663,9 +673,11 @@
 				ABD6EF09265F3709004784F0 /* AppDelegate.m in Sources */,
 				ABCF776D266DCE4C00111BF0 /* SJShareView.m in Sources */,
 				ABCF7773266DD03500111BF0 /* UIButton+SJExtensions.m in Sources */,
+				AB174E832670C0F500A48457 /* SJBaseViewController.m in Sources */,
 				ABCF7770266DCF7A00111BF0 /* SJSystemEnum.m in Sources */,
 				ABD6EF1A265F370B004784F0 /* main.m in Sources */,
 				ABD6EFA9265FBA18004784F0 /* SJCustomModel.m in Sources */,
+				AB174E862670C12900A48457 /* SJNextPageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

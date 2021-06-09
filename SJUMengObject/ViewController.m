@@ -10,6 +10,7 @@
 #import "SJShareView.h"
 #import <AuthenticationServices/AuthenticationServices.h>
 #import "WXApi.h"
+#import "SJNextPageViewController.h"
 
 @interface ViewController ()<ASAuthorizationControllerDelegate,ASAuthorizationControllerPresentationContextProviding>
 
@@ -20,10 +21,22 @@
 @property (nonatomic,strong) UIButton *weChatLoginButton;
 @property (nonatomic,strong) ASAuthorizationAppleIDButton *appleLoginButton;
 @property (nonatomic,strong) UIImageView *multipleImageView;
+@property (nonatomic,strong) UIButton *jumitButton;
 
 @end
 
 @implementation ViewController
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    //添加页面统计
+    [self beginLogPageView];
+}
+
+- (void)viewWillDisappear:(BOOL)animated{
+    [super viewWillDisappear:animated];
+    //结束页面统计
+    [self endLogPageView];
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -32,16 +45,17 @@
     [self.view addSubview:self.thirdPartyLoginLabel];
     [self thirdPartyLogin];
 //    [self.view addSubview:self.multipleImageView];
+    [self.view addSubview:self.jumitButton];
 }
 
 - (void)thirdPartyLogin{
     [self.view addSubview:self.qqLoginButton];
     [self.view addSubview:self.weChatLoginButton];
     if ([WXApi isWXAppInstalled]){
-        self.qqLoginButton.frame = CGRectMake((ScreenWidth - 160)/4, 400, 80, 80);
-        self.weChatLoginButton.frame = CGRectMake(3*(ScreenWidth - 160)/4 + 80, 400, 80, 80);
+        self.qqLoginButton.frame = CGRectMake((ScreenWidth - 160)/4, 350, 80, 80);
+        self.weChatLoginButton.frame = CGRectMake(3*(ScreenWidth - 160)/4 + 80, 350, 80, 80);
     }else{
-        self.weChatLoginButton.frame = CGRectMake((ScreenWidth - 80)/2, 400, 80, 80);
+        self.weChatLoginButton.frame = CGRectMake((ScreenWidth - 80)/2, 350, 80, 80);
     }
 
     if (@available(iOS 13.0, *)) {
@@ -137,6 +151,11 @@
             break;
     }
     [[SJUMManger shareManger] getUserInfoForPlatform:platformType];
+}
+
+- (void)jumitButtonClick{
+    SJNextPageViewController *nextPageVC = [[SJNextPageViewController alloc]init];
+    [self presentViewController:nextPageVC animated:YES completion:nil];
 }
 
 - (void)callPage{
@@ -298,10 +317,26 @@
     return _weChatLoginButton;
 }
 
+- (UIButton *)jumitButton{
+    if (!_jumitButton) {
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+        btn.frame = CGRectMake((ScreenWidth - 80)/2, 550, 80, 80);
+        [btn setTitle:@"跳转" forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+        btn.backgroundColor = [UIColor purpleColor];
+        [btn addTarget:self action:@selector(jumitButtonClick) forControlEvents:UIControlEventTouchUpInside];
+        btn.titleLabel.font = [UIFont systemFontOfSize:15];
+        btn.layer.masksToBounds = YES;
+        btn.layer.cornerRadius = 40;
+        _jumitButton = btn;
+    }
+    return _jumitButton;
+}
+
 - (ASAuthorizationAppleIDButton *)appleLoginButton API_AVAILABLE(ios(13.0)){
     if (!_appleLoginButton) {
         ASAuthorizationAppleIDButton *appleLoginBtn = [[ASAuthorizationAppleIDButton alloc] initWithAuthorizationButtonType:ASAuthorizationAppleIDButtonTypeSignIn authorizationButtonStyle:ASAuthorizationAppleIDButtonStyleBlack];
-        appleLoginBtn.frame = CGRectMake((ScreenWidth - 200)/2, 550, 200, 50);
+        appleLoginBtn.frame = CGRectMake((ScreenWidth - 200)/2, 480, 200, 50);
         appleLoginBtn.layer.cornerRadius = 5;
         appleLoginBtn.layer.masksToBounds = YES;
         [appleLoginBtn addTarget:self action:@selector(appleLoginClick) forControlEvents:UIControlEventTouchUpInside];

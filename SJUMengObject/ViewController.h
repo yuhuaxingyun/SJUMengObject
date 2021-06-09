@@ -5,9 +5,9 @@
 //  Created by deli on 2021/5/27.
 //
 
-#import <UIKit/UIKit.h>
+#import "SJBaseViewController.h"
 
-@interface ViewController : UIViewController
+@interface ViewController : SJBaseViewController
 
 
 @end
